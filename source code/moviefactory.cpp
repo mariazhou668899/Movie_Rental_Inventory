@@ -14,46 +14,8 @@ using namespace std;
 // corresponding helper methods
 Movie* MovieFactory::Create(istream& stream)
 {
-    char movieType;
-    int movieStock;
-    string movieDirector;
-    string movieTitle;
-    Movie* movie;
-
-    stream >> movieType;
-    if (stream.fail())
-        return NULL;
-
-    stream.ignore();
-    stream >> movieStock;
-    stream.ignore();
-    getline(stream >> ws, movieDirector, ',');
-    stream.ignore();
-    getline(stream >> ws, movieTitle, ',');
-
-
-    switch (movieType)
-    {
-    case 'F':
-        movie = CreateComedy(stream);
-        break;
-    case 'C':
-        movie = CreateClassics(stream);
-        break;
-    case 'D':
-        movie = CreateDrama(stream);
-        break;
-    default:
-        cout << "Invalid movie type: " << movieType << endl;
-        stream.ignore(512, '\n');
-        return NULL;
-        break;
-    }
-
-    movie->setDirector(movieDirector);
-    movie->setTitle(movieTitle);
-    movie->setStock(movieStock);
-
+    
+    ////////////////////////////////////////////////////////
     return movie;
 }
 
@@ -87,21 +49,7 @@ Drama* MovieFactory::CreateDrama(istream& stream)
 // Description: helper method to create classics movie
 Classics* MovieFactory::CreateClassics(istream& stream)
 {
-    int movieMonth;
-    int movieYear;
-    string movieMajorActorName;
-    string movieMajorActorLastname;
-
-    stream >> movieMajorActorName;
-    stream >> movieMajorActorLastname;
-    stream >> movieMonth;
-    stream >> movieYear;
-
-    Classics* classics = new Classics();
-
-    classics->setMajorActor(movieMajorActorName + " " + movieMajorActorLastname);
-    classics->setMonth(movieMonth);
-    classics->setYear(movieYear);
+    /////////////////////////////////////
 
     return classics;
 }
