@@ -16,26 +16,7 @@ Action* ActionFactory::Create(istream& stream, Business* Business)
 		return NULL;
 
 	Action* action;
-	switch (actionType)
-	{
-	case 'I':
-		action = CreateInventory(stream, Business);
-		break;
-	case 'H':
-		action = CreateHistory(stream, Business);
-		break;
-	case 'B':
-		action = CreateBorrow(stream, Business);
-		break;
-	case 'R':
-		action = CreateReturn(stream, Business);
-		break;
-	default:
-		cout << "Unknown action type: " << actionType << endl;
-		stream.ignore(512, '\n');
-		return NULL;
-		break;
-	}
+/////////////////////////////////////////////////////////////delete
 
 	return action;
 }
@@ -113,20 +94,7 @@ Media* ActionFactory::FindMedia(istream& stream, Business* Business)
 	stream >> movieType;
 	stream.ignore();
 
-	switch (movieType)
-	{
-	case 'C':
-		return FindClassics(stream, Business);
-	case 'F':
-		return FindComedy(stream, Business);
-	case 'D':
-		return FindDrama(stream, Business);
-	default:
-		cout << "Invalid movie type: " << movieType << endl;
-		stream.ignore(512, '\n');
-		return NULL;
-		break;
-	}
+///////////////////////////////////////////////////////////////////////delete
 }
 
 // ------------------------------------FindMedia----------------------------------------------
